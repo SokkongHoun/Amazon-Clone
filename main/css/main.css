@@ -10,10 +10,20 @@ body {
 .top-collection-title {
   margin-top: 30px;
   text-align: center;
-  font-size: 8vw;
+  font-size: 7vw;
   text-wrap: nowrap;
 }
 .navbar {
   width: 100%;
   position: fixed;
+}
+.cart-css {
+  position: absolute;
+}
+.total-quantity {
+  position: relative;
+  bottom: -8px;
+  left: 40px;
+  color: brown;
+  font-weight: bold;
 }
