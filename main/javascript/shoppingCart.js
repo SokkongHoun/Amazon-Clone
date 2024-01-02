@@ -11,4 +11,3 @@ export function totalQuantity() {
 export function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
-saveToStorage();

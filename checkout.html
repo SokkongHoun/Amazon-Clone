@@ -17,7 +17,7 @@
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">myWeb</a>
+          <a class="navbar-brand" href="index.html">myWeb</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -62,29 +62,35 @@
             <h3 class="review-title">Review your order</h3>
           </div>
         </div>
-        <div class="container">
-          <div class="row">
-            <div
-              class="col-md-8 col-sm-12 col order-md-1 order-2 checkout-container js-checkout-container"
-            >
-              <p class="delivery-date">Delivery date: Wednesday, January 10</p>
-              <div class="delivery-details-container">
-                <div class="delivery-image">
-                  <img
-                    src="/images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg"
-                  />
-                </div>
-                <div class="delivery-control">
-                  <p class="delivery-name">
-                    Adults Plain Cotton T-Shirt - 2 Pack
-                  </p>
-                  <p>$7.99</p>
-                  <div class="delivery-update-quantity">
-                    <p>Quantity: 1</p>
-                    <a href="#">Update</a>
-                    <a href="#">Delete</a>
+        <div class="container review-order-container">
+          <div
+            class="checkout-row order-xl-1 order-md-1 order-sm-2 order-2 js-checkout-container"
+          >
+            <div class="checkout-container">
+              <div>
+                <p class="delivery-date">
+                  Delivery date: Wednesday, January 10
+                </p>
+                <div class="delivery-details-container">
+                  <div class="delivery-image">
+                    <img
+                      src="/images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg"
+                    />
+                  </div>
+                  <div class="delivery-control">
+                    <p class="delivery-name">
+                      Adults Plain Cotton T-Shirt - 2 Pack
+                    </p>
+                    <p>$7.99</p>
+                    <div class="delivery-update-quantity">
+                      <p>Quantity: 1</p>
+                      <a href="#">Update</a>
+                      <a href="#">Delete</a>
+                    </div>
                   </div>
                 </div>
+              </div>
+              <div>
                 <div class="delivery-option">
                   <p>Choose a delivery options:</p>
                   <div class="delivery-period-1">
@@ -117,9 +123,9 @@
                 </div>
               </div>
             </div>
-            <div
-              class="col-md-3 col-sm-12 col order-md-2 order-1 order-summary-container"
-            >
+          </div>
+          <div class="order-sum-row order-xl-2 order-md-2 order-sm-1 order-1">
+            <div class="order-summary-container">
               <div>
                 <h4>Order</h4>
                 <div class="orderSummaryItem">
@@ -154,5 +160,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="main/javascript/checkout.js"></script>
   </body>
 </html>

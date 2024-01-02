@@ -1,15 +1,44 @@
+.review-order-container {
+  display: flex;
+}
 .review-title {
   margin-top: 100px;
 }
 .checkout-container {
+  display: flex;
+  width: 650px;
   border: solid;
   border-width: 1px;
   border-color: rgb(218, 218, 218);
   border-radius: 5px;
   background-color: white;
-  padding-top: 15px;
+  padding: 15px;
   margin-right: 5px;
+  margin-bottom: 5px;
 }
+.order-sum-row {
+  width: 350px;
+}
+@media (max-width: 997px) {
+  .checkout-container {
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+  }
+  .review-order-container {
+    flex-direction: column;
+  }
+  .order-sum-row {
+    width: 500px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .review-title {
+    text-align: center;
+  }
+}
+
 .delivery-date {
   font-size: 1.2em;
   font-weight: bold;
@@ -63,7 +92,7 @@
   justify-content: space-between;
 }
 .order-summary-container {
-  padding-top: 15px;
+  padding: 15px;
   border: solid;
   border-width: 1px;
   border-color: rgb(218, 218, 218);
