@@ -40,34 +40,34 @@ cart.forEach((inCartItem) => {
               </div>
               <div>
                 <div class="delivery-option">
-                  <p>Choose a delivery options:</p>
-                  <div class="delivery-period-1">
-                    <input type="radio" />
-                    <div class="delivery-option-1">
-                      <p style="margin-bottom: 0px; color: #002044d8">
-                        <b>Wednesday, January 10</b>
-                      </p>
-                      <p>FREE Shipping</p>
+                <p>Choose a delivery options:</p>
+                        <div class="delivery-period-1">
+                            <input type="radio" name="deliveryOption" />
+                            <div class="delivery-option-1">
+                            <p style="margin-bottom: 0px; color: #002044d8">
+                                <b>Wednesday, January 10</b>
+                            </p>
+                            <p>FREE Shipping</p>
+                            </div>
+                        </div>
+                        <div class="delivery-period-1">
+                            <input type="radio" name="deliveryOption" />
+                            <div class="delivery-option-1">
+                            <p style="margin-bottom: 0px; color: #002044d8">
+                                <b> Thursday, January 4</b>
+                            </p>
+                            <p>$4.99 - Shipping</p>
+                            </div>
+                        </div>
+                        <div class="delivery-period-1">
+                            <input type="radio" name="deliveryOption" />
+                            <div class="delivery-option-1">
+                            <p style="margin-bottom: 0px; color: #002044d8">
+                                <b>Wednesday, January 10</b>
+                            </p>
+                            <p>$9.99 - Shipping</p>
+                        </div>
                     </div>
-                  </div>
-                  <div class="delivery-period-1">
-                    <input type="radio" />
-                    <div class="delivery-option-1">
-                      <p style="margin-bottom: 0px; color: #002044d8">
-                        <b> Thursday, January 4</b>
-                      </p>
-                      <p>$4.99 - Shipping</p>
-                    </div>
-                  </div>
-                  <div class="delivery-period-1">
-                    <input type="radio" />
-                    <div class="delivery-option-1">
-                      <p style="margin-bottom: 0px; color: #002044d8">
-                        <b>Wednesday, January 10</b>
-                      </p>
-                      <p>$9.99 - Shipping</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
