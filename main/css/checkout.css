@@ -74,7 +74,7 @@
   margin-right: 10px;
 }
 .delivery-update-quantity a {
-  text-decoration: none;
+  cursor: pointer;
   color: rgb(0, 156, 0);
 }
 .delivery-option {
@@ -92,10 +92,35 @@
   justify-content: space-between;
 }
 .order-summary-container {
+  margin-left: 10px;
   padding: 15px;
   border: solid;
   border-width: 1px;
   border-color: rgb(218, 218, 218);
   background-color: white;
   border-radius: 5px;
+}
+.checkout-row {
+  padding: 10px;
+  max-height: 550px;
+  width: 880px;
+  background-color: #e4e4e490;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.checkout-row::-webkit-scrollbar {
+  height: 4px;
+  width: 7px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+}
+
+.checkout-row::-webkit-scrollbar-track {
+  background: #c7c7c7;
+  border-radius: 5px;
+}
+
+.checkout-row::-webkit-scrollbar-thumb {
+  background: #353535;
+  border-radius: 10px;
 }
