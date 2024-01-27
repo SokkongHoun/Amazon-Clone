@@ -68,14 +68,41 @@
 .delivery-details-container .delivery-control {
   display: inline-block;
 }
-.delivery-update-quantity p,
-.delivery-update-quantity a {
+.delivery-update-quantity p {
   display: inline-flex;
-  margin-right: 10px;
+  margin-right: 2px;
 }
-.delivery-update-quantity a {
+.quantity-input {
+  width: 50px;
+  height: 20px;
+  margin-right: 10px;
+  display: none;
+  outline: none;
+  overflow: hidden;
+}
+.quantity-amount {
+  display: initial;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.update-link,
+.delete-link {
+  cursor: pointer;
+  margin-right: 10px;
+  color: rgb(0, 156, 0);
+}
+.save-link {
+  display: none;
   cursor: pointer;
   color: rgb(0, 156, 0);
+}
+.editing-container .update-link,
+.editing-container .quantity-amount {
+  display: none;
+}
+.editing-container .save-link,
+.editing-container .quantity-input {
+  display: initial;
 }
 .delivery-option {
   margin-left: 15px;
@@ -99,28 +126,4 @@
   border-color: rgb(218, 218, 218);
   background-color: white;
   border-radius: 5px;
-}
-.checkout-row {
-  padding: 10px;
-  max-height: 550px;
-  width: 880px;
-  background-color: #e4e4e490;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-.checkout-row::-webkit-scrollbar {
-  height: 4px;
-  width: 7px;
-  border-radius: 10px;
-  border: 1px solid #cccccc;
-}
-
-.checkout-row::-webkit-scrollbar-track {
-  background: #c7c7c7;
-  border-radius: 5px;
-}
-
-.checkout-row::-webkit-scrollbar-thumb {
-  background: #353535;
-  border-radius: 10px;
 }

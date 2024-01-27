@@ -7,7 +7,11 @@ export function totalQuantity() {
   });
   return totalCartQuantity;
 }
+const cartQuantity = document.querySelector(".js-total-quantity");
 
+export function cartQuantityDisplay() {
+  cartQuantity.innerHTML = `(${totalQuantity()})`;
+}
 export function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
