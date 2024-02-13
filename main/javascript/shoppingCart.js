@@ -29,3 +29,5 @@ export function cartQuantityDisplay() {
 export function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+console.log(cart);

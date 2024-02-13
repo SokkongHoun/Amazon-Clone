@@ -11,16 +11,38 @@ import {
   unitProductPrice,
   reviewOrderCard,
 } from "./utils/money.js";
+import { deliveryOption } from "../../data/deliveryOptions.js";
+
 const checkOutProductContainer = document.querySelector(
   ".js-checkout-container"
 );
 
 function renderProductDetails(inCartItem, matchingInCartItem) {
+  const deliveryOptionId = inCartItem.deliveryId;
+  console.log(deliveryOptionId);
+
+  let matchDeliveryOptionId = deliveryOption.find(
+    (option) => deliveryOptionId === option.id
+  );
+  console.log(matchDeliveryOptionId);
+
+  const today = new Date();
+  const deliveryDate = new Date();
+  deliveryDate.setDate(
+    today.getDate() + parseInt(matchDeliveryOptionId.deliveryDay)
+  );
+  const dateString = deliveryDate.toLocaleDateString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
   return `
   <div class="checkout-container js-checkout-container">
         <div>
             <p class="delivery-date">
-                Delivery date: Wednesday, January 10
+                Delivery date: ${dateString}
             </p>
                 <div class="delivery-details-container">
                   <div class="delivery-image">
@@ -50,7 +72,6 @@ function renderProductDetails(inCartItem, matchingInCartItem) {
                       }>Save</a>
                       <a class="delete-link js-delete" data-delete-Id=${
                         matchingInCartItem.id
-                      }
                       }>Delete</a>
                     </div>
                   </div>
@@ -60,38 +81,48 @@ function renderProductDetails(inCartItem, matchingInCartItem) {
                 <div class="delivery-option">
                     <p>Choose a delivery options:
                     </p>
-                    <div class="delivery-period-1">
-                        <input type="radio"  name=${matchingInCartItem.id} />
-                        <div class="delivery-option-1">
-                        <p style="margin-bottom: 0px; color: #002044d8">
-                            <b>Wednesday, January 10</b>
-                        </p>
-                        <p>FREE Shipping</p>
-                        </div>
-                    </div>
-                    <div class="delivery-period-1">
-                        <input type="radio"  name=${matchingInCartItem.id} />
-                        <div class="delivery-option-1">
-                        <p style="margin-bottom: 0px; color: #002044d8">
-                            <b> Thursday, January 4</b>
-                        </p>
-                        <p>$4.99 - Shipping</p>
-                        </div>
-                    </div>
-                    <div class="delivery-period-1">
-                        <input type="radio"  name=${matchingInCartItem.id} />
-                        <div class="delivery-option-1">
-                        <p style="margin-bottom: 0px; color: #002044d8">
-                            <b>Wednesday, January 10</b>
-                        </p>
-                        <p>$9.99 - Shipping</p>
-                    </div>
+                    ${deliveryOptionHTML(matchingInCartItem, inCartItem)}
                 </div>
             </div>
         </div>
     </div>
   `;
 }
+
+function deliveryOptionHTML(matchingInCartItem, inCartItem) {
+  let html = "";
+  deliveryOption.forEach((option) => {
+    const isChecked = option.id === inCartItem.deliveryId;
+    const today = new Date();
+    const deliveryDate = new Date();
+    deliveryDate.setDate(today.getDate() + parseInt(option.deliveryDay));
+    const dateString = deliveryDate.toLocaleDateString("en-US", {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+    const priceString =
+      option.priceCents === 0
+        ? "FREE - Shipping"
+        : `${currencyFormat(option.priceCents)}`;
+    html += `
+    <div class="delivery-period-1">
+        <input type="radio"  
+        ${isChecked ? `checked` : ""}
+        name=${matchingInCartItem.id} />
+      <div class="delivery-option-1">
+        <p style="margin-bottom: 0px; color: #002044d8">
+          <b>${dateString}</b>
+        </p>
+        <p>$${priceString}</p>
+      </div>
+    </div>
+    `;
+  });
+  return html;
+}
+
 function renderCheckOutPage() {
   let checkOutHtml = "";
   cart.forEach((inCartItem) => {
@@ -100,14 +131,14 @@ function renderCheckOutPage() {
       (product) => product.id === inCartItemID
     );
     checkOutHtml += renderProductDetails(inCartItem, matchingInCartItem);
-
-    checkOutProductContainer.innerHTML = checkOutHtml;
-
-    // Event listeners
-    handleDeleteClick();
-    handleUpdateClick();
-    handleSaveClick();
   });
+
+  checkOutProductContainer.innerHTML = checkOutHtml;
+
+  // Event listeners
+  handleDeleteClick();
+  handleUpdateClick();
+  handleSaveClick();
 }
 
 // CONTROLLER
@@ -190,3 +221,5 @@ reviewOrderCard(totalQuantity(), totalSumPrice(products));
 renderCheckOutPage();
 attachEventListeners();
 cartQuantityDisplay();
+
+console.log(cart);

@@ -1,6 +1,4 @@
-import { cart } from "../main/javascript/shoppingCart";
-
-const deliveryOptionId = [
+export const deliveryOption = [
   {
     id: "1",
     priceCents: 0,
@@ -17,4 +15,3 @@ const deliveryOptionId = [
     deliveryDay: "0",
   },
 ];
-console.log(cart);
