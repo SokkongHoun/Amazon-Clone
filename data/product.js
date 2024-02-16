@@ -470,3 +470,34 @@ export const products = [
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
   },
 ];
+
+// abc123ef-4567-890a-bcd1-ef23gh456ijk
+// jkl234mn-5678-901o-pqr2-stu34vw567xyz
+// 890abcde-1234-fgh5-ijk6-lmn7opqr89stu
+// 234pqrst-567u-890vwxyz-123a-bcd4ef567gh
+// hijklmno-678pqr1-234stuvw567xyza-bcde2fg
+// 345hijk6-lmnop-789qrstu-012vwxyz3a-bcdef
+// 456ijkl7-mnopq-890rstuv-123wx2yz345abcd
+// mnopqrs8t-0123-uvwxyza-bcde4fghij567kl
+// opqrs9tuv-4567-wxyzabcde123-fghijk678lmn
+// 789uvwxyza-bcde0fghi-123jkl456mn-890opqr567st
+// 890xyza-bcde12fghij-345klmnop678qrs-wtvu2wxyz
+// a-bcdef345ghij6-klmnop-789qrstuvw012x2yz
+// hijklmno-0123-pqrstuvw456x2yz7ab-cde8fg
+// 456hijkl7-mnopq-890rstuvw-123abc2de3fgh
+// 234pqrst5-67uvwxyza-890bcde-123fghij678klmn
+// 678i-901jklmno-234pqrstuvw-567x2yzabc8de9fgh
+// 012hijk3lmno4p5-67-89qrstuvwabcxyza-bcde
+// pqrstuvwxyza-b2c3de4fghi-567jklmn-890opqr
+// rstuvwxyza-bcde0fgh1ij-234klmnop567qrst2u
+// stuvwxyzabc-de3fghij456klmnop-789qrst0uv
+// bcdefghij56-7klmnopqrstuvwxyza-890ab-cd12e34
+// ijklmnopqrstuv-234wxyza-567bcde8fgh-90
+// uvwxyzabc-de2fghij3456-klmnop-789qrst0
+// yza-bcde12fg3hij-456klmnop7qr-890stuwx8yz
+// abcde234fghij-567klmno-890pqrstuvw012x2yz
+// abcde78fghij-90klmnop1qrs2-345tuvwxyza-6
+// yza-bcde1fg2h3ij-456klmnopqr7s-890tuvw
+// ijklmno-9012-345pqrstu-678vwxyzabc3de4fgh
+// abcde5fghij6klmno7-pqrst8uvw-90xyza-123
+// ijklmnopqrs-tuvw0123x2yz4-567abcde8fgh9

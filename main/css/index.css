@@ -61,4 +61,9 @@
   background-color: rgba(0, 32, 68, 0.849);
   margin-bottom: 20px;
   color: white;
+  transition: transform 0.1s ease-in-out;
+}
+
+.add-to-cart-btn button:active {
+  transform: translateY(1px);
 }

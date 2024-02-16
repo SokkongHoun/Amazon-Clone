@@ -17,7 +17,7 @@
     <div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">myWeb</a>
+          <a class="navbar-brand" href="index.html">myWeb</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -42,17 +42,16 @@
                 <p class="total-quantity js-total-quantity">(0)</p>
               </li>
             </ul>
-            <form class="d-flex">
+            <div class="d-flex" id="product-form-field">
               <input
+                id="js-search-input"
                 class="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="Search for product"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+              <button class="btn btn-outline-success">Search</button>
+            </div>
           </div>
         </div>
       </nav>

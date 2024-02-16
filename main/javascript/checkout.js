@@ -4,6 +4,7 @@ import {
   cartQuantityDisplay,
   totalQuantity,
   totalSumPrice,
+  updateDeliveryOption,
 } from "./shoppingCart.js";
 import { products } from "../../data/product.js";
 import {
@@ -18,19 +19,15 @@ const checkOutProductContainer = document.querySelector(
 );
 
 function renderProductDetails(inCartItem, matchingInCartItem) {
-  const deliveryOptionId = inCartItem.deliveryId;
-  console.log(deliveryOptionId);
+  const inCartDeliveryId = inCartItem.deliveryId;
 
-  let matchDeliveryOptionId = deliveryOption.find(
-    (option) => deliveryOptionId === option.id
+  let deliveryOptions = deliveryOption.find(
+    (option) => inCartDeliveryId === option.id
   );
-  console.log(matchDeliveryOptionId);
 
   const today = new Date();
   const deliveryDate = new Date();
-  deliveryDate.setDate(
-    today.getDate() + parseInt(matchDeliveryOptionId.deliveryDay)
-  );
+  deliveryDate.setDate(today.getDate() + parseInt(deliveryOptions.deliveryDay));
   const dateString = deliveryDate.toLocaleDateString("en-US", {
     weekday: "short",
     year: "numeric",
@@ -40,55 +37,47 @@ function renderProductDetails(inCartItem, matchingInCartItem) {
 
   return `
   <div class="checkout-container js-checkout-container">
-        <div>
-            <p class="delivery-date">
-                Delivery date: ${dateString}
-            </p>
-                <div class="delivery-details-container">
-                  <div class="delivery-image">
-                    <img
-                      src="${matchingInCartItem.image}"
-                    />
-                  </div>
-                  <div class="delivery-control">
-                    <p class="delivery-name">
-                      ${matchingInCartItem.name}
-                    </p>
-                    <p class="js-priceCents">$${currencyFormat(
-                      unitProductPrice(inCartItem, matchingInCartItem)
-                    )}</p>
-                    <div class="delivery-update-quantity">
-                      <p>Quantity: <span class="quantity-amount js-amount-lable">${
-                        inCartItem.quantity
-                      }</span></p>
-                      <input class="quantity-input js-quantity-input" data-input-id=${
-                        matchingInCartItem.id
-                      } type="number" min="0">
-                      <a class="update-link js-update-quantity" data-update-id=${
-                        matchingInCartItem.id
-                      }>Update</a>
-                      <a class="save-link js-save-link" data-save-id=${
-                        matchingInCartItem.id
-                      }>Save</a>
-                      <a class="delete-link js-delete" data-delete-Id=${
-                        matchingInCartItem.id
-                      }>Delete</a>
-                    </div>
-                  </div>
+    <div>
+        <p class="delivery-date">
+            Delivery date: ${dateString}
+        </p>
+            <div class="delivery-details-container">
+              <div class="delivery-image">
+                <img
+                  src="${matchingInCartItem.image}"
+                />
+              </div>
+              <div class="delivery-control">
+                <p class="delivery-name">
+                  ${matchingInCartItem.name}
+                </p>
+                <p class="js-priceCents">$${currencyFormat(
+                  unitProductPrice(inCartItem, matchingInCartItem)
+                )}</p>
+                <div class="delivery-update-quantity">
+                  <p>Quantity: <span class="quantity-amount js-amount-lable">${
+                    inCartItem.quantity
+                  }</span></p>
+                  <a class="delete-link js-delete" data-delete-Id=${
+                    matchingInCartItem.id
+                  }>Delete</a>
                 </div>
               </div>
-              <div>
-                <div class="delivery-option">
-                    <p>Choose a delivery options:
-                    </p>
-                    ${deliveryOptionHTML(matchingInCartItem, inCartItem)}
-                </div>
             </div>
+          </div>
+        <div>
+          <div class="delivery-option">
+              <p>Choose a delivery options:
+              </p>
+              ${deliveryOptionHTML(matchingInCartItem, inCartItem)}
+          </div>
         </div>
     </div>
+  </div>
   `;
 }
 
+// Delivery Date
 function deliveryOptionHTML(matchingInCartItem, inCartItem) {
   let html = "";
   deliveryOption.forEach((option) => {
@@ -107,7 +96,9 @@ function deliveryOptionHTML(matchingInCartItem, inCartItem) {
         ? "FREE - Shipping"
         : `${currencyFormat(option.priceCents)}`;
     html += `
-    <div class="delivery-period-1">
+    <div class="delivery-period-1 js-delivery-option" 
+      data-product-id="${matchingInCartItem.id}" 
+      data-delivery-option-id="${option.id}">
         <input type="radio"  
         ${isChecked ? `checked` : ""}
         name=${matchingInCartItem.id} />
@@ -123,6 +114,7 @@ function deliveryOptionHTML(matchingInCartItem, inCartItem) {
   return html;
 }
 
+// Rendering the page
 function renderCheckOutPage() {
   let checkOutHtml = "";
   cart.forEach((inCartItem) => {
@@ -136,6 +128,7 @@ function renderCheckOutPage() {
   checkOutProductContainer.innerHTML = checkOutHtml;
 
   // Event listeners
+  handleRadioDeliveryDate();
   handleDeleteClick();
   handleUpdateClick();
   handleSaveClick();
@@ -195,8 +188,20 @@ function handleSaveClick() {
       parentContainer.classList.remove("editing-container");
       const updatedTotalSumPrice = totalSumPrice(products);
       renderCheckOutPage();
-      cartQuantityDisplay();
       reviewOrderCard(totalQuantity(), updatedTotalSumPrice);
+    });
+  });
+}
+
+// Radio selector Delivery Date
+function handleRadioDeliveryDate() {
+  document.querySelectorAll(".js-delivery-option").forEach((element) => {
+    element.addEventListener("click", () => {
+      const { productId, deliveryOptionId } = element.dataset;
+
+      updateDeliveryOption(productId, deliveryOptionId);
+      console.log("work");
+      console.log(cart);
     });
   });
 }
@@ -221,5 +226,3 @@ reviewOrderCard(totalQuantity(), totalSumPrice(products));
 renderCheckOutPage();
 attachEventListeners();
 cartQuantityDisplay();
-
-console.log(cart);

@@ -3,6 +3,7 @@ import { cart, cartQuantityDisplay, saveToStorage } from "./shoppingCart.js";
 
 let productRowContainer = document.querySelector(".js-product-row");
 
+// Generating product UI
 function generateProductHTML(product) {
   return `
   <div class="col product-container">
@@ -41,13 +42,46 @@ function generateProductHTML(product) {
   `;
 }
 
+// Perform add to cart function
 function aTcRenderingPage() {
   let html = "";
   products.forEach((product) => {
     html += generateProductHTML(product);
   });
   productRowContainer.innerHTML = html;
+  addToCart();
+}
 
+// Handling search action
+function generateFilteredProductHTML(matchingProducts) {
+  let html = "";
+  matchingProducts.forEach((product) => {
+    html += generateProductHTML(product);
+  });
+  productRowContainer.innerHTML = html;
+  if (matchingProducts) {
+    inputField.value = "";
+  } else {
+    inputField.value = "";
+    console.log("search not found");
+  }
+  addToCart();
+}
+const searchButton = document.querySelector(".btn-outline-success");
+const inputField = document.getElementById("js-search-input");
+function performSearch() {
+  const inputVal = inputField.value.trim().toLowerCase();
+
+  const matchingProducts = products.filter((product) => {
+    return product.keywords.some((keyword) =>
+      keyword.toLowerCase().includes(inputVal)
+    );
+  });
+  generateFilteredProductHTML(matchingProducts);
+}
+
+// Handling add to cart
+function addToCart() {
   const addToCartButton = document.querySelectorAll(".js-add-to-cart-btn");
 
   addToCartButton.forEach((button) => {
@@ -73,7 +107,17 @@ function aTcRenderingPage() {
     });
   });
 }
+
+// Event listener for click event
+searchButton.addEventListener("click", performSearch);
+
+// Event listener for "Enter" key
+inputField.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    performSearch();
+  }
+});
+
 aTcRenderingPage();
 cartQuantityDisplay();
-
 // If you expect a large number of product items, consider using event delegation for the "Add to Cart" buttons. Instead of attaching individual event listeners to each button, you can attach one listener to a common ancestor (like productRowContainer) and determine which button was clicked.
