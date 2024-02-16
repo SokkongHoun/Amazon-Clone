@@ -103,6 +103,12 @@ function performSearch() {
     );
   });
 
+  if (matchingProducts.length === 0) {
+    productRowContainer.innerHTML = `<h1>Search not found</h1>`;
+    inputField.value = "";
+    return;
+  }
+
   inputField.value = "";
 
   let filteredProducts = matchingProducts;
