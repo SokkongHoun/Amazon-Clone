@@ -42,42 +42,15 @@ function generateProductHTML(product) {
   `;
 }
 
-// Perform add to cart function
-function aTcRenderingPage() {
+// Product UI component for re-using front page UI
+function miniGenerateProductHTML(filteredProducts) {
   let html = "";
-  products.forEach((product) => {
+  filteredProducts.forEach((product) => {
     html += generateProductHTML(product);
   });
   productRowContainer.innerHTML = html;
-  addToCart();
-}
 
-// Handling search action
-function generateFilteredProductHTML(matchingProducts) {
-  let html = "";
-  matchingProducts.forEach((product) => {
-    html += generateProductHTML(product);
-  });
-  productRowContainer.innerHTML = html;
-  if (matchingProducts) {
-    inputField.value = "";
-  } else {
-    inputField.value = "";
-    console.log("search not found");
-  }
   addToCart();
-}
-const searchButton = document.querySelector(".btn-outline-success");
-const inputField = document.getElementById("js-search-input");
-function performSearch() {
-  const inputVal = inputField.value.trim().toLowerCase();
-
-  const matchingProducts = products.filter((product) => {
-    return product.keywords.some((keyword) =>
-      keyword.toLowerCase().includes(inputVal)
-    );
-  });
-  generateFilteredProductHTML(matchingProducts);
 }
 
 // Handling add to cart
@@ -108,14 +81,71 @@ function addToCart() {
   });
 }
 
-// Event listener for click event
-searchButton.addEventListener("click", performSearch);
+// Perform add to cart function
+function aTcRenderingPage() {
+  let html = "";
+  products.forEach((product) => {
+    html += generateProductHTML(product);
+  });
+  productRowContainer.innerHTML = html;
+  addToCart();
+}
 
-// Event listener for "Enter" key
+// Handling search action
+const searchButton = document.querySelector(".btn-outline-success");
+const inputField = document.getElementById("js-search-input");
+function performSearch() {
+  const inputVal = inputField.value.trim().toLowerCase();
+
+  let matchingProducts = products.filter((product) => {
+    return product.keywords.some((keyword) =>
+      keyword.toLowerCase().includes(inputVal)
+    );
+  });
+
+  inputField.value = "";
+
+  let filteredProducts = matchingProducts;
+
+  miniGenerateProductHTML(filteredProducts);
+}
+
+// Event listener for click & Enter event
+searchButton.addEventListener("click", performSearch);
 inputField.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     performSearch();
   }
+});
+
+// Select Radio for Rating
+const filterRating = document.querySelector(".js-rating-radio");
+filterRating.addEventListener("click", () => {
+  const sortedProducts = products.sort(
+    (a, b) => b.rating.count - a.rating.count
+  );
+
+  let sortedRating = sortedProducts.filter(() => {
+    return true;
+  });
+
+  let filteredProducts = sortedRating;
+
+  miniGenerateProductHTML(filteredProducts);
+});
+
+// Select Radio for Pricing
+const filterPrice = document.querySelector(".js-rating-price");
+filterPrice.addEventListener("click", () => {
+  const sortedProducts = products.sort((a, b) => a.priceCents - b.priceCents);
+
+  let sortedPrice = sortedProducts.filter(() => {
+    return true;
+  });
+
+  let filteredProducts = sortedPrice;
+
+  miniGenerateProductHTML(filteredProducts);
 });
 
 aTcRenderingPage();

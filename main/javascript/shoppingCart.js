@@ -7,7 +7,6 @@ export function totalQuantity() {
   );
   return totalCartQuantity;
 }
-console.log(totalQuantity());
 
 export function totalSumPrice(products) {
   let totalPrice = 0;

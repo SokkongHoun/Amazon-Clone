@@ -67,3 +67,22 @@
 .add-to-cart-btn button:active {
   transform: translateY(1px);
 }
+.filter-function {
+  margin: 30px 0;
+  & .filter-container {
+    display: flex;
+    gap: 20px;
+  }
+  & .filter-container {
+    height: 50px;
+    border-radius: 17px;
+    background: #d3d3d369;
+    box-shadow: inset 3px 3px 6px #a7a6a6, inset -3px -3px 6px #ececec;
+    & .filtering-container {
+      margin-left: 30px;
+    }
+    & label {
+      height: 20px;
+    }
+  }
+}
