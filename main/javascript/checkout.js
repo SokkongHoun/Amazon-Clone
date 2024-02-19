@@ -2,6 +2,7 @@ import {
   cart,
   saveToStorage,
   cartQuantityDisplay,
+  updateQuantity,
   updateDeliveryOption,
   totalQuantity,
 } from "./shoppingCart.js";
@@ -43,7 +44,9 @@ function renderCheckOutPage() {
     });
 
     return `
-    <div class="checkout-container js-checkout-container">
+    <div class="checkout-container js-checkout-container-${
+      matchingInCartItem.id
+    }">
       <div>
           <p class="delivery-date">
               Delivery date: ${dateString}
@@ -65,6 +68,15 @@ function renderCheckOutPage() {
                     <p>Quantity: <span class="quantity-amount js-amount-lable">${
                       inCartItem.quantity
                     }</span></p>
+                    <input class="quantity-input js-quantity-input-${
+                      matchingInCartItem.id
+                    }" type="number" min="1" />
+                    <a class="save-link js-save-link" data-save-id=${
+                      matchingInCartItem.id
+                    }>Save</a>
+                    <a class="update-link js-update" data-update-id=${
+                      matchingInCartItem.id
+                    }>Update</a>
                     <a class="delete-link js-delete" data-delete-Id=${
                       matchingInCartItem.id
                     }>Delete</a>
@@ -124,6 +136,8 @@ function renderCheckOutPage() {
   handleRadioDeliveryDate();
   handleDeleteClick();
   reviewOrderCard(syncTotalitemPrice(), totalQuantity());
+  handleUpdateClick();
+  handleSaveClick();
 }
 
 // CONTROLLER
@@ -143,6 +157,49 @@ function handleDeleteClick() {
       }
 
       saveToStorage();
+      cartQuantityDisplay();
+      renderCheckOutPage();
+    });
+  });
+}
+
+// Handle delete action
+function handleUpdateClick() {
+  const updateLink = document.querySelectorAll(".js-update");
+  updateLink.forEach((link) => {
+    link.addEventListener("click", () => {
+      const productId = link.dataset.updateId;
+
+      const container = document.querySelector(
+        `.js-checkout-container-${productId}`
+      );
+      container.classList.add("editing-container");
+      console.log(productId);
+    });
+  });
+}
+
+// Handle Save action
+function handleSaveClick() {
+  const saveLink = document.querySelectorAll(".js-save-link");
+  saveLink.forEach((link) => {
+    link.addEventListener("click", () => {
+      const productId = link.dataset.saveId;
+      console.log(productId);
+      const container = document.querySelector(
+        `.js-checkout-container-${productId}`
+      );
+
+      container.classList.remove("editing-container");
+
+      const quantityInput = container.querySelector(".quantity-input");
+
+      const newQuantity = Number(quantityInput.value);
+
+      updateQuantity(productId, newQuantity);
+
+      document.querySelector(".js-amount-lable").innerHTML = newQuantity;
+
       cartQuantityDisplay();
       renderCheckOutPage();
     });
@@ -182,12 +239,11 @@ function attachEventListeners() {
 
     if (target.classList.contains("js-delete")) {
       handleDeleteClick(target.dataset.deleteId);
+    } else if (target.classList.contains("js-update-quantity")) {
+      handleUpdateClick(target.dataset.updateId);
+    } else if (target.classList.contains("js-save-link")) {
+      handleSaveClick(target.dataset.saveId);
     }
-    // else if (target.classList.contains("js-update-quantity")) {
-    //   handleUpdateClick(target.dataset.updateId);
-    // } else if (target.classList.contains("js-save-link")) {
-    //   handleSaveClick(target.dataset.saveId);
-    // }
   });
 }
 

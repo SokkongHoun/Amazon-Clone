@@ -112,7 +112,7 @@
 
 @media (max-width: 769px) {
   .product-description p {
-    font-size: var(--font-size-secondary);
+    font-size: var(--font-size-primary);
   }
 }
 .search-not-found {
@@ -135,7 +135,7 @@
   margin-bottom: 0;
 }
 .radio-selector {
-  background: rgba(64, 64, 64, 0.42);
+  background: rgba(160, 160, 160, 0.54);
   border-radius: 13px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.5px);
@@ -143,4 +143,15 @@
   border: 1px solid rgba(64, 64, 64, 1);
   font-size: var(--font-size-primary);
   padding: 5px;
+}
+@media (max-width: 400px) {
+  .product-description p {
+    font-size: var(--font-size-secondary);
+  }
+  .product-rating img {
+    width: 60px;
+  }
+  .radio-selector p {
+    font-size: var(--font-size-secondary);
+  }
 }

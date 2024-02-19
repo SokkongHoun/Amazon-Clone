@@ -71,7 +71,7 @@ body {
   width: 100px;
   height: 30px;
   color: var(--text-color-primary);
-  background: rgba(64, 64, 64, 0.42);
+  background: rgba(160, 160, 160, 0.54);
   border-radius: 13px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.5px);

@@ -8,6 +8,13 @@ export function totalQuantity() {
   return totalCartQuantity;
 }
 
+export function updateQuantity(productId, newQuantity) {
+  let matchingItem = cart.find((item) => item.productId === productId);
+  matchingItem.quantity = newQuantity;
+
+  saveToStorage();
+}
+
 const cartQuantity = document.querySelector(".js-total-quantity");
 export function cartQuantityDisplay() {
   cartQuantity.innerHTML = `(${totalQuantity()})`;

@@ -1,3 +1,5 @@
+import { updateDeliveryOption } from "../shoppingCart.js";
+
 export function currencyFormat(priceCents) {
   return (priceCents / 100).toFixed(2);
 }
@@ -5,12 +7,10 @@ export function currencyFormat(priceCents) {
 const summaryPageCard = document.querySelector(".js-order-sum-row");
 
 export function reviewOrderCard(syncTotalitemPrice, totalQuantity) {
-  let shippingPrice = 10;
   let totalBeforeTax = syncTotalitemPrice;
   let EstimatedTax = totalBeforeTax * 0.1;
 
   let orderTotal = totalBeforeTax + EstimatedTax;
-  console.log(typeof totalBeforeTax);
 
   summaryPageCard.innerHTML = `
   <div class="order-summary-container">
@@ -22,7 +22,7 @@ export function reviewOrderCard(syncTotalitemPrice, totalQuantity) {
       </div>
       <div class="orderSummaryItem">
         <p>Shipping & handling:</p>
-        <p>$${shippingPrice}</p>
+        <p class="js-shipping-price">$0</p>
       </div>
       <div class="orderSummaryItem">
         <p>Total before tax:</p>

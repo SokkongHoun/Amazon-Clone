@@ -15,3 +15,10 @@ export const deliveryOption = [
     deliveryDay: "0",
   },
 ];
+
+export function updateDeliveryPrice(deliveryOptionId) {
+  let deliveryOption = deliveryOptionId.find(
+    (delivery) => delivery.id === deliveryOptionId
+  );
+  return deliveryOption;
+}

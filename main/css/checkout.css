@@ -6,7 +6,7 @@
 }
 .checkout-container {
   display: flex;
-  width: 650px;
+  width: 600px;
   border: solid;
   border-width: 1px;
   border-color: rgb(218, 218, 218);
@@ -17,26 +17,7 @@
   margin-bottom: 5px;
 }
 .order-sum-row {
-  width: 350px;
-}
-@media (max-width: 997px) {
-  .checkout-container {
-    flex-direction: column;
-    justify-content: center;
-    width: 500px;
-  }
-  .review-order-container {
-    flex-direction: column;
-  }
-  .order-sum-row {
-    width: 500px;
-    margin-right: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .review-title {
-    text-align: center;
-  }
+  width: 400px;
 }
 
 .delivery-date {
@@ -73,28 +54,56 @@
   margin-right: 2px;
 }
 .quantity-input {
-  width: 50px;
+  width: 33px;
   height: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   margin-right: 10px;
+  border-width: 1px;
   display: none;
   outline: none;
   overflow: hidden;
+}
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .quantity-amount {
   display: initial;
   margin-left: 5px;
   margin-right: 5px;
 }
-.update-link,
-.delete-link {
-  cursor: pointer;
-  margin-right: 10px;
-  color: rgb(0, 156, 0);
-}
 .save-link {
   display: none;
   cursor: pointer;
-  color: rgb(0, 156, 0);
+  margin-left: 5px;
+  font-size: var(--font-size-primary);
+  text-decoration: none;
+  background: rgba(160, 160, 160, 0.54);
+  color: var(--text-color-primary);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.3px);
+  -webkit-backdrop-filter: blur(4.3px);
+  border: 2px solid rgba(160, 160, 160, 1);
+}
+.update-link,
+.delete-link {
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: var(--font-size-primary);
+  text-decoration: none;
+  background: rgba(160, 160, 160, 0.54);
+  color: var(--text-color-primary);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.3px);
+  -webkit-backdrop-filter: blur(4.3px);
+  border: 2px solid rgba(160, 160, 160, 1);
 }
 .editing-container .update-link,
 .editing-container .quantity-amount {
@@ -109,6 +118,7 @@
 }
 .delivery-period-1 {
   display: flex;
+  cursor: pointer;
 }
 .delivery-period-1 input {
   margin-right: 10px;
@@ -126,4 +136,25 @@
   border-color: rgb(218, 218, 218);
   background-color: white;
   border-radius: 5px;
+}
+@media (max-width: 997px) {
+  .checkout-container {
+    flex-direction: column;
+    justify-content: center;
+    width: 350px;
+  }
+  .review-order-container {
+    flex-direction: column;
+  }
+  .order-sum-row {
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .review-title {
+    text-align: center;
+  }
+  .order-summary-container {
+    margin-left: 0px;
+  }
 }
