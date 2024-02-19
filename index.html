@@ -56,36 +56,54 @@
         </div>
       </nav>
       <main class="container">
-        <div class="banner-img">
-          <img src="/images/banner.png" width="100%" style="margin-top: 70px" />
+        <div class="title-get-start row">
+          <div class="col">
+            <h1>Get Your Best <br />Product Here</h1>
+            <p>
+              Elevate your shopping experience!<br />Dream items,
+              wallet-friendly prices
+            </p>
+            <a href="#bodyProduct"><button>Get Start</button></a>
+          </div>
+          <div class="col">
+            <img src="/images/banner.png" />
+          </div>
         </div>
-        <div class="top-collection">
+        <div class="top-collection mt-5">
           <h1 class="top-collection-title">TOP COLLECTION</h1>
         </div>
-        <div class="filter-function">
-          <h6>Filter</h6>
-          <div class="filter-container">
-            <div
-              class="d-flex align-items-center gap-3 filtering-container js-filtering-container"
-            >
-              <div class="js-rating-radio">
-                <input type="radio" id="ratingCheckbox" name="selectedFilter" />
-                <label for="ratingCheckbox">
-                  <p>High-low rating</p>
-                </label>
-              </div>
-              <div class="js-rating-price">
-                <input type="radio" id="priceCheckbox" name="selectedFilter" />
-                <label for="priceCheckbox">
-                  <p>Low-high price</p>
-                </label>
+        <div id="bodyProduct" class="body-products container-fluid">
+          <div class="filter-function">
+            <h6>Filter</h6>
+            <div class="filter-container">
+              <div class="js-filtering-container">
+                <div class="radio-selector js-rating-radio">
+                  <input
+                    type="radio"
+                    id="ratingCheckbox"
+                    name="selectedFilter"
+                  />
+                  <label for="ratingCheckbox">
+                    <p>High-low rating</p>
+                  </label>
+                </div>
+                <div class="radio-selector js-rating-price">
+                  <input
+                    type="radio"
+                    id="priceCheckbox"
+                    name="selectedFilter"
+                  />
+                  <label for="priceCheckbox">
+                    <p>Low-high price</p>
+                  </label>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="container products-main-container">
-          <div class="row d-flex justify-content-center js-product-row">
-            <!-- product-container -->
+          <div class="container products-main-container">
+            <div class="row d-flex justify-content-center js-product-row">
+              <!-- product-container -->
+            </div>
           </div>
         </div>
       </main>

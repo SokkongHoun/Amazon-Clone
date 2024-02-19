@@ -2,16 +2,11 @@ import {
   cart,
   saveToStorage,
   cartQuantityDisplay,
-  totalQuantity,
-  totalSumPrice,
   updateDeliveryOption,
+  totalQuantity,
 } from "./shoppingCart.js";
-import { products } from "../../data/product.js";
-import {
-  currencyFormat,
-  unitProductPrice,
-  reviewOrderCard,
-} from "./utils/money.js";
+import { matchingProductId } from "../../data/product.js";
+import { currencyFormat, reviewOrderCard } from "./utils/money.js";
 import { deliveryOption } from "../../data/deliveryOptions.js";
 
 const checkOutProductContainer = document.querySelector(
@@ -22,9 +17,7 @@ function renderCheckOutPage() {
   let checkOutHtml = "";
   cart.forEach((inCartItem) => {
     let inCartItemID = inCartItem.productId;
-    let matchingInCartItem = products.find(
-      (product) => product.id === inCartItemID
-    );
+    let matchingInCartItem = matchingProductId(inCartItemID);
     checkOutHtml += renderProductDetails(inCartItem, matchingInCartItem);
   });
 
@@ -66,7 +59,7 @@ function renderCheckOutPage() {
                     ${matchingInCartItem.name}
                   </p>
                   <p class="js-priceCents">$${currencyFormat(
-                    unitProductPrice(inCartItem, matchingInCartItem)
+                    matchingInCartItem.priceCents
                   )}</p>
                   <div class="delivery-update-quantity">
                     <p>Quantity: <span class="quantity-amount js-amount-lable">${
@@ -130,6 +123,7 @@ function renderCheckOutPage() {
   // Event listeners
   handleRadioDeliveryDate();
   handleDeleteClick();
+  reviewOrderCard(syncTotalitemPrice(), totalQuantity());
 }
 
 // CONTROLLER
@@ -148,10 +142,8 @@ function handleDeleteClick() {
         cart.splice(index, 1);
       }
 
-      const updatedTotalSumPrice = totalSumPrice(products);
       saveToStorage();
       cartQuantityDisplay();
-      reviewOrderCard(totalQuantity(), updatedTotalSumPrice);
       renderCheckOutPage();
     });
   });
@@ -167,6 +159,20 @@ function handleRadioDeliveryDate() {
       renderCheckOutPage();
     });
   });
+}
+
+// Sync price items
+function syncTotalitemPrice() {
+  let total = 0;
+  cart.forEach((inCartId) => {
+    let inCartItemID = inCartId.productId;
+    let matchingPriceItem = matchingProductId(inCartItemID);
+
+    let itemTotal = matchingPriceItem.priceCents * inCartId.quantity;
+
+    total += itemTotal;
+  });
+  return total / 100;
 }
 
 // function is responsible for attaching a click event listener to the checkOutProductContainer
@@ -185,8 +191,6 @@ function attachEventListeners() {
   });
 }
 
-totalSumPrice(products);
-reviewOrderCard(totalQuantity(), totalSumPrice(products));
 attachEventListeners();
 cartQuantityDisplay();
 renderCheckOutPage();

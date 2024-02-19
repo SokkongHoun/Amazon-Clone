@@ -6,39 +6,48 @@ let productRowContainer = document.querySelector(".js-product-row");
 // Generating product UI
 function generateProductHTML(product) {
   return `
-  <div class="col product-container">
-      <div class="product-img">
-          <img src="${product.image}" />
+  <div class="col-xxl-2 col-xl-2 col-md-3 col-sm-4 col-5 product-container">
+          <div class="product-img">
+            <img src="${product.image}" />
+          </div>
+          <div class="product-description">
+            <p>${product.name}</p>
+          </div>
+          <div class="product-rating">
+            <img class="product-rating-stars" src="images/ratings/rating-${
+              product.rating.stars * 10
+            }.png" />
+            <p>${product.rating.count}</p>
+          </div>
+          <div>
+            <p class="product-price">$${(product.priceCents / 100).toFixed(
+              2
+            )}</p>
+          </div>
+          <div class="input-atc-card">
+            <div class="product-input">
+              <select class="item-selector" data-selector-id="${product.id}">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+            </div>
+            <div class="add-to-cart-btn">
+              <button
+                class="js-add-to-cart-btn"
+                data-product-Id="${product.id}"
+              >
+                Add
+              </button>
+            </div>
+          </div>
       </div>
-      <div class="product-description">
-          <p>${product.name}</p>
-      </div>
-      <div class="product-rating">
-      <img class="product-rating-stars"
-            src="images/ratings/rating-${product.rating.stars * 10}.png">
-      <p>${product.rating.count}</p>
-      </div>
-      <div>
-      <p class="product-price">$${(product.priceCents / 100).toFixed(2)}</p>
-      </div>
-      <div class="product-input">
-          <select class="item-selector" data-selector-id=${product.id}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-          </select>
-      </div>
-      <div class="add-to-cart-btn">
-      <button class=" js-add-to-cart-btn" data-product-Id=${product.id}
-        >Add To Cart</button>
-      </div>
-  </div>
   `;
 }
 
@@ -104,7 +113,14 @@ function performSearch() {
   });
 
   if (matchingProducts.length === 0) {
-    productRowContainer.innerHTML = `<h1>Search not found</h1>`;
+    productRowContainer.innerHTML = `
+    <div class="container-fluid search-not-found">
+          <img src="images/searchnotfound.png" alt="seach not found" />
+          <h4>
+            We couldn't find a match for '${inputVal}'. Please try another
+            search.
+          </h4>
+        </div>`;
     inputField.value = "";
     return;
   }
