@@ -135,7 +135,7 @@ function renderCheckOutPage() {
   // Event listeners
   handleRadioDeliveryDate();
   handleDeleteClick();
-  reviewOrderCard(syncTotalitemPrice(), totalQuantity());
+  reviewOrderCard(totalQuantity(), syncTotalitemPrice());
   handleUpdateClick();
   handleSaveClick();
 }
@@ -195,7 +195,6 @@ function handleSaveClick() {
       const quantityInput = container.querySelector(".quantity-input");
 
       const newQuantity = Number(quantityInput.value);
-
       updateQuantity(productId, newQuantity);
 
       document.querySelector(".js-amount-lable").innerHTML = newQuantity;
@@ -219,7 +218,7 @@ function handleRadioDeliveryDate() {
 }
 
 // Sync price items
-function syncTotalitemPrice() {
+export function syncTotalitemPrice() {
   let total = 0;
   cart.forEach((inCartId) => {
     let inCartItemID = inCartId.productId;
@@ -233,20 +232,6 @@ function syncTotalitemPrice() {
 }
 
 // function is responsible for attaching a click event listener to the checkOutProductContainer
-function attachEventListeners() {
-  checkOutProductContainer.addEventListener("click", (event) => {
-    const target = event.target;
 
-    if (target.classList.contains("js-delete")) {
-      handleDeleteClick(target.dataset.deleteId);
-    } else if (target.classList.contains("js-update-quantity")) {
-      handleUpdateClick(target.dataset.updateId);
-    } else if (target.classList.contains("js-save-link")) {
-      handleSaveClick(target.dataset.saveId);
-    }
-  });
-}
-
-attachEventListeners();
 cartQuantityDisplay();
 renderCheckOutPage();

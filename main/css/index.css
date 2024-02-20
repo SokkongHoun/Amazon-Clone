@@ -18,14 +18,11 @@
 .product-container {
   margin: 10px 5px;
   padding-top: 20px;
-  background: rgba(255, 255, 255, 0.31);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.5px);
   -webkit-backdrop-filter: blur(9.5px);
-  border: 1px solid rgba(255, 255, 255, 1);
-  border-width: 1px;
-  border-color: rgb(167, 167, 167);
+  border: 1px solid rgb(167, 167, 167);
 }
 .product-img {
   text-align: center;
@@ -125,7 +122,9 @@
   width: 40%;
 }
 .filter-function {
-  margin: 40px 30px;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
 }
 .js-filtering-container {
   display: flex;
@@ -135,16 +134,36 @@
   margin-bottom: 0;
 }
 .radio-selector {
-  background: rgba(160, 160, 160, 0.54);
   border-radius: 13px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  border: 1px solid rgba(64, 64, 64, 1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgb(167, 167, 167);
   font-size: var(--font-size-primary);
   padding: 5px;
 }
-@media (max-width: 400px) {
+.filter-function {
+  margin-left: 7.3%;
+}
+@media (max-width: 1800px) {
+  .filter-function {
+    margin-left: 7%;
+  }
+}
+@media (max-width: 1199px) {
+  .filter-function {
+    margin-left: 11.5%;
+  }
+}
+@media (max-width: 767px) {
+  .filter-function {
+    margin-left: 16%;
+  }
+}
+@media (max-width: 575px) {
+  .filter-function {
+    margin-left: 7.5%;
+  }
   .product-description p {
     font-size: var(--font-size-secondary);
   }

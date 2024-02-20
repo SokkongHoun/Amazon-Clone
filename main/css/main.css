@@ -13,6 +13,9 @@ body {
 }
 .navbar {
   z-index: 1000;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 .cart-css {
   position: absolute;
@@ -28,7 +31,8 @@ body {
   width: 120%;
 }
 .title-get-start p {
-  font-size: 3vh;
+  font-size: 20px;
+  font-weight: lighter;
 }
 .title-get-start h1 {
   font-size: 6vh;
@@ -70,26 +74,19 @@ body {
 .title-get-start button {
   width: 100px;
   height: 30px;
+  border-radius: 10px;
+  background-color: white;
   color: var(--text-color-primary);
-  background: rgba(160, 160, 160, 0.54);
-  border-radius: 13px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  border: 1px solid rgba(64, 64, 64, 1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgb(167, 167, 167);
   font-size: var(--font-size-primary);
 }
 main {
   margin-top: 5%;
 }
-.body-products {
-  background: rgba(255, 255, 255, 0.44);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.2px);
-  -webkit-backdrop-filter: blur(6.2px);
-  border: 1px solid rgba(255, 255, 255, 1);
-}
+
 .clear-radio-selector {
   cursor: pointer;
 }

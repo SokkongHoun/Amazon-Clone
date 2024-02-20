@@ -6,7 +6,7 @@ export function currencyFormat(priceCents) {
 
 const summaryPageCard = document.querySelector(".js-order-sum-row");
 
-export function reviewOrderCard(syncTotalitemPrice, totalQuantity) {
+export function reviewOrderCard(totalQuantity, syncTotalitemPrice) {
   let totalBeforeTax = syncTotalitemPrice;
   let EstimatedTax = totalBeforeTax * 0.1;
 

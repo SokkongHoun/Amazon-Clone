@@ -1,8 +1,10 @@
 .review-order-container {
   display: flex;
+  gap: 10px;
 }
 .review-title {
-  margin-top: 100px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .checkout-container {
   display: flex;
@@ -10,11 +12,16 @@
   border: solid;
   border-width: 1px;
   border-color: rgb(218, 218, 218);
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: white;
+  color: var(--text-color-primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgb(167, 167, 167);
   padding: 15px;
   margin-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 .order-sum-row {
   width: 400px;
@@ -79,16 +86,17 @@
   display: none;
   cursor: pointer;
   margin-left: 5px;
+  padding: 5px;
   font-size: var(--font-size-primary);
   text-decoration: none;
-  background: rgba(160, 160, 160, 0.54);
-  color: var(--text-color-primary);
-  padding: 5px;
+
   border-radius: 5px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4.3px);
-  -webkit-backdrop-filter: blur(4.3px);
-  border: 2px solid rgba(160, 160, 160, 1);
+  background-color: white;
+  color: var(--text-color-primary);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgb(167, 167, 167);
 }
 .update-link,
 .delete-link {
@@ -96,14 +104,15 @@
   margin-left: 5px;
   font-size: var(--font-size-primary);
   text-decoration: none;
-  background: rgba(160, 160, 160, 0.54);
   color: var(--text-color-primary);
   padding: 5px;
   border-radius: 5px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4.3px);
-  -webkit-backdrop-filter: blur(4.3px);
-  border: 2px solid rgba(160, 160, 160, 1);
+  background-color: white;
+  color: var(--text-color-primary);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgb(167, 167, 167);
 }
 .editing-container .update-link,
 .editing-container .quantity-amount {
@@ -129,32 +138,49 @@
   justify-content: space-between;
 }
 .order-summary-container {
-  margin-left: 10px;
   padding: 15px;
-  border: solid;
-  border-width: 1px;
-  border-color: rgb(218, 218, 218);
+  border-radius: 10px;
   background-color: white;
-  border-radius: 5px;
+  color: var(--text-color-primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.5px);
+  -webkit-backdrop-filter: blur(9.5px);
+  border: 1px solid rgb(167, 167, 167);
 }
 @media (max-width: 997px) {
   .checkout-container {
     flex-direction: column;
     justify-content: center;
-    width: 350px;
-  }
-  .review-order-container {
-    flex-direction: column;
+    width: 400px;
   }
   .order-sum-row {
     width: 300px;
-    margin-top: 10px;
     margin-bottom: 10px;
   }
   .review-title {
     text-align: center;
   }
-  .order-summary-container {
-    margin-left: 0px;
+}
+@media (max-width: 767px) {
+  .order-sum-row {
+    width: 100%;
+  }
+  .checkout-container {
+    width: 516px;
+  }
+  .review-order-container {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 575px) {
+  .checkout-container {
+    width: 351px;
+  }
+  .review-order-container {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 }
