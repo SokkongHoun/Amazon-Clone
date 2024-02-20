@@ -8,7 +8,7 @@ body {
 }
 .top-collection-title {
   text-align: center;
-  font-size: 6vw;
+  font-size: 5vw;
   text-wrap: nowrap;
 }
 .navbar {
@@ -27,6 +27,9 @@ body {
   color: brown;
   font-weight: bold;
 }
+.title-get-start {
+  margin-top: 10%;
+}
 .title-get-start img {
   width: 120%;
 }
@@ -38,12 +41,18 @@ body {
   font-size: 6vh;
 }
 @media (max-width: 1199px) {
+  .title-get-start {
+    margin-top: 20%;
+  }
   .title-get-start p {
     font-size: 3vh;
   }
 }
 @media (max-width: 999px) {
   .title-get-start h1 {
+    font-size: 6vh;
+  }
+  .top-collection-title {
     font-size: 6vh;
   }
   .title-get-start p {
@@ -62,13 +71,24 @@ body {
     text-align: center;
   }
   .title-get-start h1 {
-    font-size: 7vh;
+    font-size: 6vh;
   }
   .title-get-start p {
     font-size: 2.6vh;
   }
   .title-get-start img {
     margin-top: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .title-get-start h1 {
+    font-size: 4vh;
+  }
+  .title-get-start p {
+    font-size: 2vh;
+  }
+  .top-collection-title {
+    font-size: 4vh;
   }
 }
 .title-get-start button {
