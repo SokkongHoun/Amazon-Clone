@@ -16,9 +16,14 @@ export const deliveryOption = [
   },
 ];
 
-export function updateDeliveryPrice(deliveryOptionId) {
-  let deliveryOption = deliveryOptionId.find(
-    (delivery) => delivery.id === deliveryOptionId
-  );
-  return deliveryOption;
+export function getDeliveryOption(deliveryId) {
+  let matchDeliveryOption;
+
+  deliveryOption.forEach((option) => {
+    if (option.id === deliveryId) {
+      matchDeliveryOption = option;
+    }
+  });
+
+  return matchDeliveryOption;
 }

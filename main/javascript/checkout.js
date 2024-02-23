@@ -8,7 +8,10 @@ import {
 } from "./shoppingCart.js";
 import { matchingProductId } from "../../data/product.js";
 import { currencyFormat, reviewOrderCard } from "./utils/money.js";
-import { deliveryOption } from "../../data/deliveryOptions.js";
+import {
+  deliveryOption,
+  getDeliveryOption,
+} from "../../data/deliveryOptions.js";
 
 const checkOutProductContainer = document.querySelector(
   ".js-checkout-container"
@@ -27,9 +30,7 @@ function renderCheckOutPage() {
   function renderProductDetails(inCartItem, matchingInCartItem) {
     const inCartDeliveryId = inCartItem.deliveryId;
 
-    let deliveryOptions = deliveryOption.find(
-      (option) => inCartDeliveryId === option.id
-    );
+    const deliveryOptions = getDeliveryOption(inCartDeliveryId);
 
     const today = new Date();
     const deliveryDate = new Date();
