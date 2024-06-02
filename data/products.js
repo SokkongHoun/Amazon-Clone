@@ -75,10 +75,19 @@ export function loadProduct(renderFunction) {
   xhr.open("GET", "https://supersimplebackend.dev/products");
   xhr.send();
 }
-loadProduct(() => {
-  console.log("products loaded");
-});
 
+export function loadCart(fun) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("load", () => {
+    console.log(xhr.response);
+  });
+
+  xhr.open("GET", "https://supersimplebackend.dev/cart");
+  xhr.send();
+
+  fun();
+}
 /*
 export const products = [
   {
