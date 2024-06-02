@@ -1,6 +1,6 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { loadFromStorage, cart } from "../../data/cart.js";
-import { loadProduct } from "../../data/products.js";
+import { loadProduct, fetchProducts } from "../../data/products.js";
 
 describe("test suite: renderOrderSummary", () => {
   const productId1 = "e43638ce-6aa0-4b85-b27f-e1d07eb678c6";
@@ -8,7 +8,7 @@ describe("test suite: renderOrderSummary", () => {
 
   // done function parameter: done control this beforeAll code wait until this code complete until the other test can run. done function paramter can be use in beforeEach and it as well
   beforeAll((done) => {
-    loadProduct(() => {
+    fetchProducts().then(() => {
       done();
     });
   });
